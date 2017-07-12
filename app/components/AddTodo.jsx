@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var {connect} = require('react-redux');
 var actions = require('actions');
 

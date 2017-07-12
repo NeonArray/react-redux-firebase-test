@@ -1,33 +1,35 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import firebase, { firebaseRef } from 'app/firebase';
-var expect = require('expect');
-var actions = require('actions');
+import expect from 'expect';
+import * as actions from 'actions';
 
 const createMockStore = configureMockStore([thunk]);
 
+
 describe('Actions', () => {
+
   it('should generate search text action', () => {
-    var action = {
+    const action = {
       type: 'SET_SEARCH_TEXT',
       searchText: 'Some search text'
     };
-    var res = actions.setSearchText(action.searchText);
+    const res = actions.setSearchText(action.searchText);
 
     expect(res).toEqual(action);
   });
 
   it('should generate toggle show completed action', () => {
-    var action = {
+    const action = {
       type: 'TOGGLE_SHOW_COMPLETED'
     };
-    var res = actions.toggleShowCompleted();
+    const res = actions.toggleShowCompleted();
 
     expect(res).toEqual(action);
   });
 
   it('should generate add todo action', () => {
-    var action = {
+    const action = {
       type: 'ADD_TODO',
       todo: {
         id: '123',
@@ -36,7 +38,7 @@ describe('Actions', () => {
         createdAt: 0
       }
     };
-    var res = actions.addTodo(action.todo);
+    const res = actions.addTodo(action.todo);
 
     expect(res).toEqual(action);
   });
@@ -48,42 +50,45 @@ describe('Actions', () => {
 
     store.dispatch(actions.startAddTodo(todoText)).then(() => {
       const actions = store.getActions();
+
       expect(actions[0]).toInclude({
         type: 'ADD_TODO'
       });
+
       expect(actions[0].todo).toInclude({
         text: todoText
       });
+
       done();
     }).catch(done);
   });
 
   it('should generate add todos action object', () => {
-    var todos = [{
+    const todos = [{
       id: '111',
       text: 'anything',
       completed: false,
       completedAt: undefined,
       createdAt: 33000
     }];
-    var action = {
+    const action = {
       type: 'ADD_TODOS',
       todos
     };
-    var res = actions.addTodos(todos);
+    const res = actions.addTodos(todos);
 
     expect(res).toEqual(action);
   });
 
   it('should generate update todo action', () => {
-    var action = {
+    const action = {
       type: 'UPDATE_TODO',
       id: '123',
       updates: {
         completed: false
       }
     };
-    var res = actions.updateTodo(action.id, action.updates);
+    const res = actions.updateTodo(action.id, action.updates);
 
     expect(res).toEqual(action);
   });

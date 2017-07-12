@@ -1,1 +1,1 @@
-Boilerplate React App
+This application is just part of a Udemy course on React. It serves to familiarize myself with Redux and integrating Firebase into a React application.

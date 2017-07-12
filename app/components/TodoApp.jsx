@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 var uuid = require('node-uuid');
 var moment = require('moment');
 
